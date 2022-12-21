@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_graph"
+    app:startDestination="@id/vendorsFragment">
+
+    <fragment
+        android:id="@+id/vendorsFragment"
+        android:name="com.example.newsapi.fragments.VendorsFragment"
+        android:label="fragment_vendors"
+        tools:layout="@layout/fragment_vendors" >
+        <action
+            android:id="@+id/action_vendorsFragment_to_vendorInfoFragment"
+            app:destination="@id/vendorInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vendorInfoFragment"
+        android:name="com.example.newsapi.fragments.VendorInfoFragment"
+        android:label="fragment_vendor_info"
+        tools:layout="@layout/fragment_vendor_info" />
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.newsapi.fragments.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_treeFragment"
+            app:destination="@id/treeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/treeFragment"
+        android:name="com.example.newsapi.fragments.TreeFragment"
+        android:label="fragment_tree"
+        tools:layout="@layout/fragment_tree" />
+</navigation>
