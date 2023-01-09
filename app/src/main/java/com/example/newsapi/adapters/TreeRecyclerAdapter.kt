@@ -1,12 +1,15 @@
 package com.example.newsapi.adapters
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.newsapi.databinding.ActivityTreeBinding
+import com.example.newsapi.models.Tree
 
-class TreeRecyclerAdapter: RecyclerView.Adapter<TreeRecyclerAdapter.MyHolder>() {
+class TreeRecyclerAdapter(private val trees: ArrayList<Tree>, private val context: Context): RecyclerView.Adapter<TreeRecyclerAdapter.MyHolder>() {
+
    inner class MyHolder(private val bind: ActivityTreeBinding):ViewHolder(bind.root) {
 
     }
