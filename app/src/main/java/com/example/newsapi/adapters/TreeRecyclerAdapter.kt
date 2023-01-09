@@ -22,7 +22,5 @@ class TreeRecyclerAdapter(private val trees: ArrayList<Tree>, private val contex
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
     }
 
-    override fun getItemCount(): Int {
-        return 15
-    }
+    override fun getItemCount() = trees.size
 }
