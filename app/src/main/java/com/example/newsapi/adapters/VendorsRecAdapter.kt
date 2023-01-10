@@ -15,17 +15,16 @@ import com.example.newsapi.fragments.ShopFragment
 import com.example.newsapi.fragments.TreeFragment
 import com.example.newsapi.models.Vendor
 
-class VendorsRecAdapter(private val cont:Context): RecyclerView.Adapter<VendorsRecAdapter.MyHolder>() {
-    private lateinit var vendorList:List<Vendor>
+class VendorsRecAdapter(private val vendors:List<Vendor>, private val cont:Context): RecyclerView.Adapter<VendorsRecAdapter.MyHolder>() {
 
     inner class MyHolder(private val bind:ActivityVendorBinding):ViewHolder(bind.root){
-        init {
-            bind.root.setOnClickListener(View.OnClickListener {
-                Toast.makeText(cont, "clicked", Toast.LENGTH_LONG).show()
-                val fragment:ShopFragment = ShopFragment.newInstance("yees", "noo")
-                NavHostFragment().findNavController().navigate(R.id.action_shopFragment_to_treeFragment)
-            })
+
+        fun setData(vendor:Vendor){
+            bind.vendorName.text = vendor.name
+            bind.vendorStatus.text = vendor.location
         }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -34,10 +33,9 @@ class VendorsRecAdapter(private val cont:Context): RecyclerView.Adapter<VendorsR
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        holder.setData(vendors[position])
 
     }
 
-    override fun getItemCount(): Int {
-        return 10
-    }
+    override fun getItemCount() = vendors.size
 }
