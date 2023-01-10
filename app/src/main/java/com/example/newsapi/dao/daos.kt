@@ -29,4 +29,6 @@ interface VendorDao{
 interface  TreeDao{
     @Insert
     fun addTree(tree: Tree)
+    @Query("select * from trees")
+    fun getTrees():List<Tree>
 }
