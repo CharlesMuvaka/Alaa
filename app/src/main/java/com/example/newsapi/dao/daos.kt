@@ -10,18 +10,18 @@ import com.example.newsapi.models.Vendor
 @Dao
 interface UserDao{
     @Insert
-    fun addUser(user: User)
+    suspend fun addUser(user: User)
     @Query("select * from users")
-    fun getUsers(): List<User>
+    suspend fun getUsers(): List<User>
 
 }
 
 @Dao
 interface VendorDao{
     @Insert
-    fun addVendor(vendor: Vendor)
+    suspend fun addVendor(vendor: Vendor)
     @Query("select * from vendors")
-    fun getVendors(): List<Vendor>
+    suspend fun getVendors(): List<Vendor>
 
 }
 
