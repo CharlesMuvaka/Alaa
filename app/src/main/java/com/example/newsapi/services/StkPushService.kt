@@ -11,5 +11,6 @@ interface StkPushService {
 
     @POST("mpesa/stkpush/v1/processrequest")
     fun sendPushServiceRequest(@Body stkPush: StkPush): Call<StkPush>
-
+    @GET("oauth/v1/generate?grant_type=client_credentials")
+    fun getAccessToken():Call<AccessToken>
 }
