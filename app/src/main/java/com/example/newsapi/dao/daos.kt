@@ -19,9 +19,9 @@ interface UserDao{
 @Dao
 interface VendorDao{
     @Insert
-    suspend fun addVendor(vendor: Vendor)
+    fun addVendor(vendor: Vendor)
     @Query("select * from vendors")
-    suspend fun getVendors(): List<Vendor>
+    fun getVendors(): List<Vendor>
 
 }
 
