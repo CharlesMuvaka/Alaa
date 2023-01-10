@@ -12,6 +12,12 @@ class TreeRecyclerAdapter(private val trees: ArrayList<Tree>, private val contex
 
    inner class MyHolder(private val bind: ActivityTreeBinding):ViewHolder(bind.root) {
 
+       fun setData(tree: Tree){
+           bind.name.text = tree.name
+           bind.description.text = tree.description
+           tree.image?.let { bind.image.setImageResource(it) }
+       }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -20,6 +26,7 @@ class TreeRecyclerAdapter(private val trees: ArrayList<Tree>, private val contex
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
+        holder.setData(trees[position])
     }
 
     override fun getItemCount() = trees.size
