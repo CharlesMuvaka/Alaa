@@ -10,7 +10,8 @@ import com.example.newsapi.models.Vendor
 interface UserDao{
     @Insert
     fun addUser(user: User)
-
+    @Query("select * from users")
+    fun getUsers(): List<User>
 
 }
 
