@@ -15,3 +15,8 @@ interface UserDao{
 
 }
 
+interface VendorDao{
+    @Insert
+    fun addVendor(vendor: Vendor)
+
+}
