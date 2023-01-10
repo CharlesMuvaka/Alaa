@@ -46,7 +46,7 @@ class VendorFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         if (bind.submit == p0){
-            NavHostFragment.findNavController(this).navigate(R.id.action_vendorFragment_to_mainActivity)
+            NavHostFragment.findNavController(this).navigate(R.id.action_vendorFragment_to_mainFragment)
         }else if (bind.sign == p0){
             NavHostFragment.findNavController(this).navigate(R.id.action_vendorFragment_to_signUpFragment)
 
