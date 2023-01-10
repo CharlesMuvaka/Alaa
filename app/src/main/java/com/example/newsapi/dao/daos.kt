@@ -18,5 +18,7 @@ interface UserDao{
 interface VendorDao{
     @Insert
     fun addVendor(vendor: Vendor)
+    @Query("select * from vendors")
+    fun getVendors(): List<Vendor>
 
 }
