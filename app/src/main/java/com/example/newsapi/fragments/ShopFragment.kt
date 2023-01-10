@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.room.Room
 import com.example.newsapi.DatabaseClient
@@ -17,6 +19,7 @@ class ShopFragment : Fragment() {
 
     private lateinit var bind: FragmentShopBinding
     private lateinit var seedlings:List<Tree>
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,9 @@ class ShopFragment : Fragment() {
         // Inflate the layout for this fragment
         bind = FragmentShopBinding.inflate(layoutInflater)
 
+        navController = NavHostFragment.findNavController(this)
+
+
         val databaseClient = context?.let {
             Room.databaseBuilder(
                 it.applicationContext,
@@ -41,7 +47,7 @@ class ShopFragment : Fragment() {
             seedlings = databaseClient.treeDao.getTrees()
         }
         bind.myRecView.apply {
-            adapter = context?.let { TreeRecyclerAdapter(seedlings, it) }
+            adapter = TreeRecyclerAdapter(seedlings, navController)
             layoutManager = GridLayoutManager(context, 1)
             hasFixedSize()
         }
