@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -15,14 +17,19 @@ import com.example.newsapi.fragments.ShopFragment
 import com.example.newsapi.fragments.TreeFragment
 import com.example.newsapi.models.Vendor
 
-class VendorsRecAdapter(private val vendors:List<Vendor>, private val cont:Context): RecyclerView.Adapter<VendorsRecAdapter.MyHolder>() {
+class VendorsRecAdapter(private val vendors:List<Vendor>, private val cont:NavController): RecyclerView.Adapter<VendorsRecAdapter.MyHolder>() {
 
     inner class MyHolder(private val bind:ActivityVendorBinding):ViewHolder(bind.root){
 
         fun setData(vendor:Vendor){
             bind.vendorName.text = vendor.name
             bind.vendorStatus.text = vendor.location
+
+            bind.root.setOnClickListener{
+                cont.navigate(R.id.action_vendorsFragment_to_vendorInfoFragment)
+            }
         }
+
 
 
     }
