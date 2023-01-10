@@ -1,107 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ShopFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cont1"
-        android:layout_margin="8dp"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/locat"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/layout_design"
-        android:backgroundTint="@color/light_green"
+        android:text="Seedlings in: Nairobi"
+        android:textSize="20sp"
+        android:layout_margin="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/dark_green"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recView">
-
-        <TextView
-            android:id="@+id/intro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp"
-            android:text="click on the below items to read more and get more information"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/location"/>
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/location"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/circ"
-            android:src="@drawable/storelocat"
-            app:layout_constraintTop_toBottomOf="@id/intro"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ship"/>
-        <TextView
-            android:id="@+id/location_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Store locations"
-            app:layout_constraintTop_toBottomOf="@id/location"
-            app:layout_constraintLeft_toLeftOf="@id/location"
-            app:layout_constraintRight_toRightOf="@id/location"/>
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ship"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/circ"
-            android:src="@drawable/ship"
-            app:layout_constraintTop_toTopOf="@id/location"
-            app:layout_constraintStart_toEndOf="@id/location"
-            app:layout_constraintEnd_toStartOf="@id/returns"/>
-        <TextView
-            android:id="@+id/ship_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="How we ship"
-            app:layout_constraintTop_toBottomOf="@id/ship"
-            app:layout_constraintLeft_toLeftOf="@id/ship"
-            app:layout_constraintRight_toRightOf="@id/ship"/>
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/returns"
-            android:layout_width="120dp"
-            android:layout_height="80dp"
-            android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/circ"
-            android:src="@drawable/returns"
-            app:layout_constraintTop_toTopOf="@id/ship"
-            app:layout_constraintStart_toEndOf="@id/ship"
-            app:layout_constraintEnd_toEndOf="parent"/>
-        <TextView
-            android:id="@+id/returns_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Returns"
-            app:layout_constraintTop_toBottomOf="@id/returns"
-            app:layout_constraintLeft_toLeftOf="@id/returns"
-            app:layout_constraintRight_toRightOf="@id/returns"/>
-
-        <SearchView
-            android:id="@+id/search"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/layout_design"
-            android:layout_margin="12dp"
-            app:layout_constraintTop_toBottomOf="@id/ship_text"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/myRecView"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recView"
+        android:id="@+id/myRecView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/cont1"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/locat"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
