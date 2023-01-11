@@ -20,5 +20,10 @@ class Validator {
         return phoneNumber
     }
 
+    fun getPassword(businessShortCode:String,passKey:String, timeStamp:String):String{
+        val password = businessShortCode + passKey + timeStamp
+        return android.util.Base64.encodeToString(password.toByteArray(), android.util.Base64.NO_WRAP)
+    }
+
 
 }
