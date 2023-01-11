@@ -60,5 +60,7 @@ class ApiClient {
         return retrofit
     }
 
-
+    fun MpesaPayment():StkPushService{
+        return getRetrofitInstance().create(StkPushService::class.java)
+    }
 }
