@@ -15,5 +15,10 @@ class ApiClient {
     private lateinit var mAuthToken:String
     private val loginInterceptor = HttpLoggingInterceptor()
 
+    fun setIsDebug(isDebug:Boolean):ApiClient{
+        this.isDebug = isDebug
+        return this
+    }
+
 
 }
