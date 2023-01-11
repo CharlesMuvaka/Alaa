@@ -30,5 +30,16 @@ class ApiClient {
         return this
     }
 
+    private fun getOkHttPClient(): OkHttpClient.Builder{
+
+        val okHttpClient = OkHttpClient.Builder()
+        okHttpClient.connectTimeout(CONNECT_TIMEOUT.toLong(), TimeUnit.SECONDS)
+            .writeTimeout(WRITE_TIMEOUT.toLong(), TimeUnit.SECONDS)
+            .readTimeout(READ_TIMEOUT.toLong(), TimeUnit.SECONDS)
+            .addInterceptor(loginInterceptor)
+
+        return okHttpClient
+    }
+
 
 }
