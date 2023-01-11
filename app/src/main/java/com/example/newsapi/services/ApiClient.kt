@@ -41,5 +41,24 @@ class ApiClient {
         return okHttpClient
     }
 
+    private fun getRetrofitInstance(): Retrofit{
+
+        val okHttpClient = getOkHttPClient()
+        val builder = Retrofit.Builder().baseUrl(BASEURL).addConverterFactory(GsonConverterFactory.create())
+
+        if (isDebug){
+            loginInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        }
+
+        if (mAuthToken.isNotEmpty()){
+            okHttpClient.addInterceptor(AuthInterceptor(mAuthToken))
+        }
+
+        builder.client(okHttpClient.build())
+        retrofit = builder.build()
+
+        return retrofit
+    }
+
 
 }
