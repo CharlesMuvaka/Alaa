@@ -20,5 +20,15 @@ class ApiClient {
         return this
     }
 
+    fun setAuthToken(authToken:String): ApiClient{
+        this.mAuthToken = authToken
+        return this
+    }
+
+    fun setGetAccessToken(accessToken:Boolean):ApiClient{
+        this.isGetAccessToken = accessToken
+        return this
+    }
+
 
 }
