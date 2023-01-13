@@ -64,8 +64,15 @@ class TreeFragment : Fragment(), View.OnClickListener {
         apiClient.setGetAccessToken(true)
         apiClient.MpesaPayment().getAccessToken().enqueue(object : Callback<AccessToken>{
             override fun onResponse(call: Call<AccessToken>, response: Response<AccessToken>) {
-                if (response.isSuccessful){
-                    apiClient.setAuthToken(response.body()!!.accessToken)
+                try{
+                    if (response.isSuccessful){
+                        apiClient.setAuthToken(response.body()!!.accessToken)
+                    }else{
+                        bind.treeName.text = response.errorBody().toString()
+                    }
+                }catch (e: Exception){
+                    bind.treeName.text = e.message
+
                 }
             }
 
