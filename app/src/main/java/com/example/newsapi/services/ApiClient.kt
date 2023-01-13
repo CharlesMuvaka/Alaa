@@ -12,7 +12,7 @@ class ApiClient {
     private lateinit var retrofit: Retrofit
     private var isDebug:Boolean = false
     private var isGetAccessToken:Boolean = false
-    private lateinit var mAuthToken:String
+    private var mAuthToken:String? = null
     private val loginInterceptor = HttpLoggingInterceptor()
 
     fun setIsDebug(isDebug:Boolean):ApiClient{
@@ -50,8 +50,8 @@ class ApiClient {
             loginInterceptor.level = HttpLoggingInterceptor.Level.BODY
         }
 
-        if (mAuthToken.isNotEmpty()){
-            okHttpClient.addInterceptor(AuthInterceptor(mAuthToken))
+        if (mAuthToken?.isNotEmpty() == true){
+            okHttpClient.addInterceptor(AuthInterceptor(mAuthToken!!))
         }
 
         builder.client(okHttpClient.build())
