@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
 import com.example.newsapi.R
 import com.example.newsapi.databinding.FragmentMainBinding
@@ -119,6 +120,30 @@ class TreeFragment : Fragment(), View.OnClickListener {
             "i-plant Kenya",
             "Seedling Purchase"
         )
+        apiClient.setGetAccessToken(false)
+
+        apiClient.MpesaPayment().sendPushServiceRequest(stkPush).enqueue(object : Callback<StkPush> {
+            override fun onResponse(call: Call<StkPush>, response: Response<StkPush>) {
+                progressDialog.dismiss()
+                try {
+                    if (response.isSuccessful){
+                        Toast.makeText(context, "Received successful", Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context, response.errorBody().toString(), Toast.LENGTH_LONG).show()
+
+                    }
+                }catch (e:Exception){
+                    Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
+
+                }
+            }
+
+            override fun onFailure(call: Call<StkPush>, t: Throwable) {
+                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
+
+            }
+
+        })
 
     }
 
