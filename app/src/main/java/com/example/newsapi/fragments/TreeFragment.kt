@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.navArgs
 import com.example.newsapi.R
 import com.example.newsapi.databinding.FragmentMainBinding
 import com.example.newsapi.databinding.FragmentTreeBinding
@@ -26,6 +27,7 @@ class TreeFragment : Fragment(), View.OnClickListener {
     private lateinit var apiClient:ApiClient
     private lateinit var progressDialog:ProgressDialog
     private lateinit var  mainBind: FragmentMainBinding
+    val args: TreeFragmentArgs by navArgs()
 
 
 
@@ -42,11 +44,15 @@ class TreeFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         bind = FragmentTreeBinding.inflate(layoutInflater)
         mainBind = FragmentMainBinding.inflate(layoutInflater)
+        mainBind.image3.setImageResource(R.drawable.ic_arrow)
 
         progressDialog = ProgressDialog(context)
         apiClient = ApiClient()
         apiClient.setIsDebug(false) // for logging purposes
         getAccessToken()
+
+        val tree = args.tree
+        setUpTreeData(tree)
 
         val parent = requireParentFragment().view
 
@@ -60,6 +66,13 @@ class TreeFragment : Fragment(), View.OnClickListener {
         return bind.root
     }
 
+    private fun setUpTreeData(tree: Tree) {
+        bind.treeName.text = tree.name
+//        bind.image.setImageResource(tree.image!!)
+        bind.species.text = tree.species
+
+    }
+
     private fun getAccessToken() {
         apiClient.setGetAccessToken(true)
         apiClient.MpesaPayment().getAccessToken().enqueue(object : Callback<AccessToken>{
@@ -68,16 +81,16 @@ class TreeFragment : Fragment(), View.OnClickListener {
                     if (response.isSuccessful){
                         apiClient.setAuthToken(response.body()!!.accessToken)
                     }else{
-                        bind.treeName.text = response.errorBody().toString()
+//                        bind.treeName.text = response.errorBody().toString()
                     }
                 }catch (e: Exception){
-                    bind.treeName.text = e.message
+//                    bind.treeName.text = e.message
 
                 }
             }
 
             override fun onFailure(call: Call<AccessToken>, t: Throwable) {
-                bind.treeName.text = t.message
+//                bind.treeName.text = t.message
             }
 
         })
