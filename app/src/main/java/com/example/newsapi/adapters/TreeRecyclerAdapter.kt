@@ -1,6 +1,7 @@
 package com.example.newsapi.adapters
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.NavController
@@ -21,7 +22,11 @@ class TreeRecyclerAdapter(private val trees: List<Tree>, private val context: Na
            tree.image?.let { bind.image.setImageResource(it) }
 
            bind.root.setOnClickListener{
-                context.navigate(R.id.action_shopFragment_to_treeFragment)
+               val bundle = Bundle().apply {
+                   putSerializable("tree", tree)
+               }
+
+                context.navigate(R.id.action_shopFragment_to_treeFragment, bundle)
            }
        }
 
